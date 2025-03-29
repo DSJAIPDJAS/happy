@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تهنئة متطورة بعيد الفطر</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            font-family: 'El Messiri', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+        
+        .universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .greeting-card {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(249, 212, 35, 0.3);
+            transform-style: preserve-3d;
+            animation: float 8s ease-in-out infinite;
+            overflow: hidden;
+        }
+        
+        .greeting-text {
+            font-size: 5vw;
+            font-weight: bold;
+            background: linear-gradient(45deg, #f9d423, #ff8c00, #ff4e50);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(249, 212, 35, 0.7);
+            position: relative;
+            line-height: 1.5;
+            opacity: 0;
+            animation: textAppear 2s ease-out 0.5s forwards;
+        }
+        
+        .sub-message {
+            font-size: 2vw;
+            color: #fff;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 3s forwards;
+            margin-top: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        
+        .mosque {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%23f9d423"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%23f9d423"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%23f9d423"></path></svg>') no-repeat;
+            background-size: cover;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        .lanterns {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .lantern {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            border-radius: 50% 50% 5px 5px;
+            opacity: 0.8;
+            animation: flicker 3s infinite alternate;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg) rotateY(5deg); }
+            50% { transform: translateY(-20px) rotateX(-5deg) rotateY(-5deg); }
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        @keyframes textAppear {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .greeting-text { font-size: 8vw; }
+            .sub-message { font-size: 4vw; }
+            .greeting-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="universe" class="universe"></canvas>
+    
+    <div class="greeting-card">
+        <div id="lanterns" class="lanterns"></div>
+        
+        <div class="greeting-text">
+            كُلّ عَامٍ وَأَنْتُمْ بِخَيْر
+        </div>
+        <div class="sub-message">
+            عِيدُ فِطْرٍ مُبَارَك، تَقَبَّلَ اللهُ مِنَّا وَمِنْكُمْ
+        </div>
+        
+        <div class="mosque"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // ===== الكون ثلاثي الأبعاد =====
+        const universeScene = new THREE.Scene();
+        const universeCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('universe'),
+            antialias: true,
+            alpha: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        
+        universeCamera.position.z = 30;
+
+        // ===== النجوم الكبيرة =====
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsCount = 2000;
+        
+        const starsPositions = new Float32Array(starsCount * 3);
+        const starsColors = new Float32Array(starsCount * 3);
+        const starsSizes = new Float32Array(starsCount);
+        
+        for (let i = 0; i < starsCount; i++) {
+            const i3 = i * 3;
+            starsPositions[i3] = (Math.random() - 0.5) * 2000;
+            starsPositions[i3 + 1] = (Math.random() - 0.5) * 2000;
+            starsPositions[i3 + 2] = (Math.random() - 0.5) * 2000;
+            
+            starsColors[i3] = 0.8 + Math.random() * 0.2;
+            starsColors[i3 + 1] = 0.8 + Math.random() * 0.2;
+            starsColors[i3 + 2] = 0.9 + Math.random() * 0.1;
+            
+            starsSizes[i] = Math.random() * 3 + 1;
+        }
+        
+        starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
+        starsGeometry.setAttribute('color', new THREE.BufferAttribute(starsColors, 3));
+        starsGeometry.setAttribute('size', new THREE.BufferAttribute(starsSizes, 1));
+        
+        const starsMaterial = new THREE.PointsMaterial({
+            size: 2.5,
+            vertexColors: true,
+            transparent: true,
+            opacity: 1,
+            blending: THREE.AdditiveBlending,
+            sizeAttenuation: true
+        });
+        
+        const stars = new THREE.Points(starsGeometry, starsMaterial);
+        universeScene.add(stars);
+
+        // ===== المجرات =====
+        const galaxyGeometry = new THREE.TorusGeometry(50, 8, 16, 100);
+        const galaxyMaterial = new THREE.MeshBasicMaterial({ 
+            color: 0x4488ff, 
+            wireframe: true,
+            transparent: true,
+            opacity: 0.4
+        });
+        
+        const galaxies = [];
+        for (let i = 0; i < 8; i++) {
+            const galaxy = new THREE.Mesh(galaxyGeometry, galaxyMaterial);
+            galaxy.position.x = (Math.random() - 0.5) * 1000;
+            galaxy.position.y = (Math.random() - 0.5) * 1000;
+            galaxy.position.z = (Math.random() - 0.5) * 1000;
+            galaxy.rotation.x = Math.random() * Math.PI;
+            galaxy.rotation.y = Math.random() * Math.PI;
+            universeScene.add(galaxy);
+            galaxies.push(galaxy);
+        }
+
+        // ===== الفوانيس الملونة =====
+        const lanternColors = [
+            '#f9d423', '#ff8c00', '#ff4e50', 
+            '#fc00ff', '#00dbde', '#8a2be2'
+        ];
+        
+        const lanternContainer = document.getElementById('lanterns');
+        for (let i = 0; i < 20; i++) {
+            const lantern = document.createElement('div');
+            lantern.className = 'lantern';
+            lantern.style.background = lanternColors[i % lanternColors.length];
+            lantern.style.boxShadow = `0 0 25px ${lanternColors[i % lanternColors.length]}`;
+            lantern.style.left = `${Math.random() * 100}%`;
+            lantern.style.top = `${Math.random() * 100}%`;
+            lantern.style.animationDelay = `${Math.random() * 2}s`;
+            lanternContainer.appendChild(lantern);
+        }
+
+        // ===== التأثيرات المتحركة =====
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // حركة النجوم
+            stars.rotation.x += 0.0001;
+            stars.rotation.y += 0.0002;
+            
+            // حركة المجرات
+            galaxies.forEach(galaxy => {
+                galaxy.rotation.x += 0.001;
+                galaxy.rotation.y += 0.0015;
+            });
+            
+            renderer.render(universeScene, universeCamera);
+        }
+        animate();
+
+        // ===== تكييف حجم الشاشة =====
+        window.addEventListener('resize', () => {
+            universeCamera.aspect = window.innerWidth / window.innerHeight;
+            universeCamera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
